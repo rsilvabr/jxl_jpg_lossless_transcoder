@@ -1,4 +1,4 @@
-# jpeg_to_jxl.py
+# jxl_jpg_lossless_transcoder.py
 
 Lossless JPEG ↔ JXL transcoder. Encodes JPEG files into smaller JXL archives and
 recovers the original JPEG bit-for-bit at any time.
@@ -50,35 +50,35 @@ Note: unlike `tiff_to_jxl.py`, this script does **not** require `tifffile` or `n
 ```powershell
 # ── The easy way — mode 0, no flags needed ──────────────────────
 # Single file, in-place
-py jpeg_to_jxl.py "F:\Photos\photo.jpg"
+py jxl_jpg_lossless_transcoder.py "F:\Photos\photo.jpg"
 
 # Single file → specific output folder
-py jpeg_to_jxl.py "F:\Photos\photo.jpg" "F:\output"
+py jxl_jpg_lossless_transcoder.py "F:\Photos\photo.jpg" "F:\output"
 
 # Whole folder, in-place (flat — subfolders not touched)
-py jpeg_to_jxl.py "F:\Photos"
+py jxl_jpg_lossless_transcoder.py "F:\Photos"
 
 # Whole folder → specific output folder (flat)
-py jpeg_to_jxl.py "F:\Photos" "F:\output"
+py jxl_jpg_lossless_transcoder.py "F:\Photos" "F:\output"
 
 # ── Other modes ──────────────────────────────────────────────────
 # Capture One _EXPORT workflow (mode 7)
-py jpeg_to_jxl.py "F:\2024" --mode 7
+py jxl_jpg_lossless_transcoder.py "F:\2024" --mode 7
 
 # Sync — only re-encode JPEGs newer than their JXL
-py jpeg_to_jxl.py "F:\2024" --mode 7 --sync
+py jxl_jpg_lossless_transcoder.py "F:\2024" --mode 7 --sync
 
 # Decode — recover original JPEGs from transcoded JXLs
-py jpeg_to_jxl.py "F:\Photos\JXL" --decode
+py jxl_jpg_lossless_transcoder.py "F:\Photos\JXL" --decode
 
 # Decode — skip MD5 verification
-py jpeg_to_jxl.py "F:\Photos\JXL" --decode --no-verify
+py jxl_jpg_lossless_transcoder.py "F:\Photos\JXL" --decode --no-verify
 
 # 16 parallel workers
-py jpeg_to_jxl.py "F:\2024" --mode 7 --workers 16
+py jxl_jpg_lossless_transcoder.py "F:\2024" --mode 7 --workers 16
 
 # Mode 8 — in-place recursive
-py jpeg_to_jxl.py "F:\Photos" --mode 8
+py jxl_jpg_lossless_transcoder.py "F:\Photos" --mode 8
 ```
 
 ---
@@ -180,14 +180,14 @@ Same structure as `tiff_to_jxl.py`.
 
 | Mode | Input | Output location | Example |
 |------|-------|----------------|---------|
-| `0` | File or folder | In-place or → output_dir (flat, non-recursive) | `photo.jxl` / `output_dir/photo.jxl` |
+| `0` ⭐ | File or folder | In-place or → output_dir (flat, non-recursive) | `photo.jxl` / `output_dir/photo.jxl` |
 | `1` | Single file | `converted_jxl/` subfolder next to source | `.../converted_jxl/photo.jxl` |
 | `2` | — | *Discontinued — use mode 0 with output_dir* | — |
 | `3` | Directory | `converted_jxl/` inside each JPEG folder | `.../JPEG/converted_jxl/photo.jxl` |
 | `4` | Directory | Sibling folder `JXL_jpeg/` | `.../JXL_jpeg/photo.jxl` |
 | `5` | Directory | Rename folder `JPEG` → `JXL` | `.../Export_JXL/photo.jxl` |
 | `6` | Directory | `_EXPORT` anchor — all JPEGs | `.../session/_EXPORT/JXL_jpeg/photo.jxl` |
-| `7` | Directory | `_EXPORT` anchor — only inside `_EXPORT` | `.../session/_EXPORT/JXL_jpeg/photo.jxl` |
+| `7` ⭐ | Directory | `_EXPORT` anchor — only inside `_EXPORT` | `.../session/_EXPORT/JXL_jpeg/photo.jxl` |
 | `8` | Directory | In-place recursive — JXL next to each JPEG | `.../session/photo.jxl` |
 
 ### Decode (JXL → JPEG)
@@ -201,14 +201,14 @@ Same structure as `tiff_to_jxl.py`.
 | `4` | Directory | Sibling folder `JPEG_recovered/` | `.../JPEG_recovered/photo.jpg` |
 | `5` | Directory | Rename folder `JXL` → `JPEG_recovered` | `.../Export_JPEG_recovered/photo.jpg` |
 | `6` | Directory | `_EXPORT` anchor — all JXLs | `.../session/_EXPORT/JPEG_recovered/photo.jpg` |
-| `7` | Directory | `_EXPORT` anchor — only inside `_EXPORT` | `.../session/_EXPORT/JPEG_recovered/photo.jpg` |
+| `7` ⭐ | Directory | `_EXPORT` anchor — only inside `_EXPORT` | `.../session/_EXPORT/JPEG_recovered/photo.jpg` |
 
 ---
 
 ## CLI reference
 
 ```
-py jpeg_to_jxl.py <input> [output] [options]
+py jxl_jpg_lossless_transcoder.py <input> [output] [options]
 
 Arguments:
   input           Input root folder (JPEGs for encode, JXLs for decode)
@@ -265,7 +265,7 @@ folder, move the database too (or re-encode to regenerate it).
 
 ## Differences from tiff_to_jxl.py
 
-| | tiff_to_jxl.py | jpeg_to_jxl.py |
+| | tiff_to_jxl.py | jxl_jpg_lossless_transcoder.py |
 |--|--|--|
 | Source format | 16-bit TIFF | JPEG |
 | Encoder | VarDCT or Modular | JPEG transcoding only |
