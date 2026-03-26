@@ -180,14 +180,14 @@ Same structure as `tiff_to_jxl.py`.
 
 | Mode | Input | Output location | Example |
 |------|-------|----------------|---------|
-| `0` ⭐ | File or folder | In-place or → output_dir (flat, non-recursive) | `photo.jxl` / `output_dir/photo.jxl` |
+| `0` | File or folder | In-place or → output_dir (flat, non-recursive) | `photo.jxl` / `output_dir/photo.jxl` |
 | `1` | Single file | `converted_jxl/` subfolder next to source | `.../converted_jxl/photo.jxl` |
 | `2` | — | *Discontinued — use mode 0 with output_dir* | — |
 | `3` | Directory | `converted_jxl/` inside each JPEG folder | `.../JPEG/converted_jxl/photo.jxl` |
 | `4` | Directory | Sibling folder `JXL_jpeg/` | `.../JXL_jpeg/photo.jxl` |
 | `5` | Directory | Rename folder `JPEG` → `JXL` | `.../Export_JXL/photo.jxl` |
 | `6` | Directory | `_EXPORT` anchor — all JPEGs | `.../session/_EXPORT/JXL_jpeg/photo.jxl` |
-| `7` ⭐ | Directory | `_EXPORT` anchor — only inside `_EXPORT` | `.../session/_EXPORT/JXL_jpeg/photo.jxl` |
+| `7` | Directory | `_EXPORT` anchor — only inside `_EXPORT` | `.../session/_EXPORT/JXL_jpeg/photo.jxl` |
 | `8` | Directory | In-place recursive — JXL next to each JPEG | `.../session/photo.jxl` |
 
 ### Decode (JXL → JPEG)
@@ -201,7 +201,7 @@ Same structure as `tiff_to_jxl.py`.
 | `4` | Directory | Sibling folder `JPEG_recovered/` | `.../JPEG_recovered/photo.jpg` |
 | `5` | Directory | Rename folder `JXL` → `JPEG_recovered` | `.../Export_JPEG_recovered/photo.jpg` |
 | `6` | Directory | `_EXPORT` anchor — all JXLs | `.../session/_EXPORT/JPEG_recovered/photo.jpg` |
-| `7` ⭐ | Directory | `_EXPORT` anchor — only inside `_EXPORT` | `.../session/_EXPORT/JPEG_recovered/photo.jpg` |
+| `7` | Directory | `_EXPORT` anchor — only inside `_EXPORT` | `.../session/_EXPORT/JPEG_recovered/photo.jpg` |
 
 ---
 
