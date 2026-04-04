@@ -1,6 +1,6 @@
-# Deprecated
+# Deprecated -> Use jxl_photo — JXL Workflow Manager instead
 
-Please use *JXL-Photo* instead. 
+Please use **jxl_photo — JXL Workflow Manager** instead. 
 It has not only jxl <-> jpg lossless transcoder, but can do lossy convertion 
 and also works with TIFF and PNG. 
 
