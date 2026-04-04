@@ -1,3 +1,14 @@
+# Deprecated
+
+Please use *JXL-Photo* instead. 
+It has not only jxl <-> jpg lossless transcoder, but can do lossy convertion 
+and also works with TIFF and PNG. 
+
+Link: https://github.com/rsilvabr/jxl-photo
+
+---
+
+
 # jxl_jpg_lossless_transcoder.py
 
 Lossless JPEG ↔ JXL transcoder. Encodes JPEG files into smaller JXL archives and
